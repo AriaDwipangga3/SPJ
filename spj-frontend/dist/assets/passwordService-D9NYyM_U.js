@@ -1,0 +1,1 @@
+import{x as o}from"./index-rSl7cEAC.js";const a={forgotPassword(r){return o.post("/forgot-password",r).then(s=>s.data)},resetPassword(r){return o.post("/reset-password",r).then(s=>s.data)}};export{a as p};
