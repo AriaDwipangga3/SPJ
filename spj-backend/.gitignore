@@ -1,0 +1,31 @@
+
+# Dependencies
+/node_modules
+/vendor
+
+# Environment
+.env
+.env.backup
+.env.production
+
+# Laravel cache
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+
+/storage/*.key
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+
+# Testing
+.phpunit.cache
+.phpunit.result.cache
+
+# IDE
+.idea
+.vscode
+
+# OS
+.DS_Store
+Thumbs.db

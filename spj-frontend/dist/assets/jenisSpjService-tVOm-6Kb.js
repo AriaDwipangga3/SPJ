@@ -1,0 +1,1 @@
+import{x as n}from"./index-rSl7cEAC.js";const a={index(){return n.get("/jenis-spj").then(e=>e.data)},show(e){return n.get(`/jenis-spj/${e}`).then(t=>t.data)},store(e){return n.post("/jenis-spj",e).then(t=>t.data)},update(e,t){return n.put(`/jenis-spj/${e}`,t).then(s=>s.data)},destroy(e){return n.delete(`/jenis-spj/${e}`).then(t=>t.data)}};export{a as j};

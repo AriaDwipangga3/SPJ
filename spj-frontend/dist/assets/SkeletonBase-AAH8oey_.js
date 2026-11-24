@@ -1,0 +1,1 @@
+import{o as s,c as a,p as r}from"./index-rSl7cEAC.js";const t={__name:"SkeletonBase",props:{class:{type:String,default:"h-4 w-full rounded"}},setup(l){return(e,n)=>(s(),a("div",{class:r(["bg-surface-disabled animate-pulse",e.$props.class]),"aria-hidden":"true"},null,2))}};export{t as _};

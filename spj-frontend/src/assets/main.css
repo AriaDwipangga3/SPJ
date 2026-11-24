@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+/* ============================================================
+   FONT LOKAL (dibundel ke APK, tidak butuh internet / CDN Google)
+   ============================================================ */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url('./fonts/material-symbols-outlined.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('./fonts/inter-latin-wght-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('./fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+}
+
+@theme {
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Primary & secondary */
+  --color-primary: #0f172a;
+  --color-primary-hover: #1e293b;
+  --color-secondary: #475569;
+
+  /* Surfaces */
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-disabled: #f1f5f9;
+
+  /* Text hierarchy */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-subtle: #94a3b8;
+
+  /* Border / divider */
+  --color-border: #e2e8f0;
+  --color-border-soft: #f1f5f9;
+  --color-border-focus: #cbd5e1;
+
+  /* Status */
+  --color-error: #ba1a1a;
+  --color-error-bg: #ffdad6;
+
+  /* Accent status (subtle) */
+  --color-success-bg: #ecfdf5;
+  --color-success-text: #047857;
+  --color-success-border: #a7f3d0;
+  --color-warning-bg: #fffbeb;
+  --color-warning-text: #b45309;
+  --color-warning-border: #fde68a;
+  --color-info-bg: #eff6ff;
+  --color-info-text: #1d4ed8;
+  --color-info-border: #bfdbfe;
+
+  /* Radius */
+  --radius-DEFAULT: 0.5rem;
+  --radius-nested: 0.375rem;
+  --radius-inner: 0.375rem;
+  --radius-pill: 9999px;
+
+  /* Shadow */
+  --shadow-elevation-1: 0 1px 2px 0 rgba(15, 23, 42, 0.04), 0 1px 3px 0 rgba(15, 23, 42, 0.02);
+  --shadow-elevation-2: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+  --shadow-elevation-3: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+code, .font-mono-id {
+  font-family: var(--font-mono);
+}
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-focus);
+}
+
+
+/* ============================================================
+   MOBILE / CAPACITOR
+   ============================================================ */
+
+/* Safe area: status bar & gesture bar Android (edge-to-edge).
+   max() dipakai supaya aman baik env() maupun variabel Capacitor terisi,
+   tanpa padding ganda. Di desktop nilainya 0. */
+:root {
+  --sat: max(env(safe-area-inset-top, 0px), var(--safe-area-inset-top, 0px));
+  --sab: max(env(safe-area-inset-bottom, 0px), var(--safe-area-inset-bottom, 0px));
+}
+.safe-top { padding-top: var(--sat); }
+.safe-bottom { padding-bottom: var(--sab); }
+
+/* Cegah halaman bergeser ke samping di HP */
+body { overflow-x: clip; }
+
+/* ============================================================
+   IKON (Material Symbols)
+   - Kotak ikon SELALU 1em x 1em, glyph di tengah.
+   - line-height: 1 !important WAJIB: utilitas Tailwind v4
+     !text-sm / !text-base / !text-lg ikut memaksa line-height
+     (mis. 1.43), yang membuat glyph turun & terpotong di kotak 1em
+     sehingga ikon tidak sejajar dengan teks/tombol.
+   ============================================================ */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  line-height: 1 !important;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: normal;
+  text-transform: none;
+  word-wrap: normal;
+  direction: ltr;
+  user-select: none;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tombol / badge ikon-saja: pastikan ikon tepat di tengah */
+button > .material-symbols-outlined:only-child,
+a > .material-symbols-outlined:only-child {
+  margin: 0;
+}
